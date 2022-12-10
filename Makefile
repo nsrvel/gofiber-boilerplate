@@ -21,4 +21,7 @@ migrateup:
 migratedown:
 	migrate -database postgres://root:secret@localhost:5432/SimpleTransaction?sslmode=disable -path migrations down 1
 
-.PHONY: run composeup composedown migrateup migratedown
+tools:
+	./go-tools
+
+.PHONY: run composeup composedown migrateup migratedown tools
