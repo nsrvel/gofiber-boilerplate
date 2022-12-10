@@ -1,0 +1,66 @@
+App:
+    Name: Go-Fiber Boilerplate
+    Endpoint: /api/v1
+    Port: 3000
+    Env: Local
+    SSL: false
+    BodyLimit: 20
+    HexaSecretKey: qwertyuiopasdfgh
+
+Routes:
+    Methods: GET,POST,PUT,DELETE
+    Headers: Content-Type,Authorization,Authorization-ID,Accept-Key,Timestamp,Cookie
+    Origins:
+        IsDefault: true
+        FeLocal: localhost:3000
+        FeDev: localhost:3000
+        FeProd: localhost:3000
+
+Connection:
+    CRMPortalDB:
+        DriverName: postgres
+        DriverSource: host=localhost port=5432 user=root password=secret dbname=SimpleTransaction sslmode=disable TimeZone=Asia/Jakarta
+        MaxOpenConns: 5
+        MaxIdleConns: 5
+        ConnMaxLifetime: 30
+        ConnMaxIdleTime: 30
+    Redis:
+        Host: localhost:6379
+        Password:
+        DB: 0
+        DefaultDB: 0
+        MinIdleConns: 200
+        PoolSize: 12000
+        PoolTimeout: 240
+
+Logger:
+    Logrus:
+        Level: Debug
+    ZapLogger:
+        Development: true
+        DisableCaller: false
+        DisableStacktrace: false
+        Encoding: json
+        Level: info
+
+Authorization:
+    JWT:
+        AccessTokenSecretKey: qwertyuiopasdfghjklzxcvbnm
+        AccessTokenDuration: 20
+        RefreshTokenSecretKey: qwertyuiopasdfghjklzxcvbnm
+        RefreshTokenDuration: 7
+    Basic:
+        ApiKey: qwertyuiopasdfghjklzxcvbnm
+        ApiSecret: qwertyuiopasdfghjklzxcvbnm
+
+CloudStorage:
+    GoogleStorage:
+        ProjectID: yourprojectid
+        GoogleCredentialsFile: googlestorageauth.json
+        GoogleCloudStorageBucket: yourbucket
+        GoogleCloudStorageURL: https://storage.googleapis.com
+        AppName: yourappname
+        DefaultMaxUploadSize: 2
+
+Grafana:
+    LokiURL: localhost
